@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>节流</title><style>
+  #wrap {height: 1000px;background:#ccc;}
+  </style>
+</head>
+<body>
+  <div id="wrap">content</div>
+
+  <script>
+  // 函数节流主要有两种实现方法：时间戳和定时器
+
+  // 1. 时间戳
+  var throttle = function(fn, delay) {
+    var prev = Date.now()
+    return function() {
+      var now = Date.now()
+      if (now - prev >= delay) {
+        fn.apply(this, arguments)
+        prev = Date.now()
+      }
+    }
+  }
+
+  function handle() {
+    console.log('时间戳', Math.random())
+  }
+  document.addEventListener('scroll', throttle(handle, 1000))
+
+  // 2. 定时器
+  var throttle2 = function(fn, delay) {
+    var timer = null
+    return function() {
+      if (!timer) {
+        timer = setTimeout(function() {
+          fn.apply(this, arguments)
+          timer = null
+        }, delay)
+      }
+    }
+  }
+  function handle() {
+    console.log('定时器', Math.random())
+  }
+
+  window.addEventListener('scroll', throttle2(handle, 1000))
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "debouncethrottle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Foosux/debounceThrottle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Foosux/debounceThrottle/issues"
+  },
+  "homepage": "https://github.com/Foosux/debounceThrottle#readme"
+}

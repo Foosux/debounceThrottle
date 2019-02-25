@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>防抖</title>
+  <style>
+  #wrap {height: 1000px;background:#ccc;}
+  </style>
+</head>
+<body>
+  <div id="wrap">content</div>
+
+  <script>
+    function debounce(fn, time) {
+      // 定时器标记
+      let timeout = null
+      return function () {
+        // 滚动时清除定时器
+        clearTimeout(timeout)
+        // 重新绑定定时器（相当于重新计时）
+        timeout = setTimeout(() => {
+          fn.apply(this, arguments)
+        }, time)
+      }
+    }
+    function sayHi() {
+      console.log('防抖成功')
+    }
+
+    // 滚动停止1s后执行sayHi，滚动期间不触发
+    document.addEventListener('scroll', debounce(sayHi, 1000))
+  </script>
+</body>
+</html>
